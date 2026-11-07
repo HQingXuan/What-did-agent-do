@@ -1,0 +1,12 @@
+{
+  "name": "what-did-agent-do",
+  "interface": { "displayName": "What did agent do" },
+  "plugins": [
+    {
+      "name": "what-did-agent-do",
+      "source": { "source": "local", "path": "./" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "what-did-agent-do",
+  "version": "0.1.0",
+  "description": "Makes the agent explain every design decision in one line, keeps a decision log, and preps you for a system design interview on the project.",
+  "author": { "name": "HaoQ", "url": "https://github.com/HQingXuan" },
+  "homepage": "https://github.com/HQingXuan/What-did-agent-do",
+  "repository": "https://github.com/HQingXuan/What-did-agent-do",
+  "license": "MIT",
+  "keywords": ["decision-log", "adr", "explainability", "system-design-interview"],
+  "hooks": "./hooks/claude.json"
+}
