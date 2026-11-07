@@ -58,12 +58,16 @@ Rules for the line:
 | Project has agent code but no log | Backfill | [references/decision-log.md](references/decision-log.md) |
 | "Help me present / interview on this" | Interview | [references/interview-mode.md](references/interview-mode.md) |
 
+If the skill is invoked with the argument `explain`, `backfill` or `interview`, you MUST run that mode directly.
+
 ### Capture
 1. When you make a decision, write the one-line note in your reply.
 2. Append an entry to `docs/decisions.md` in the project, using the format in the decision log reference.
 3. If a new decision reverses an old one, mark the old entry `Superseded by D-<n>` rather than deleting it, because the history of why it changed is what interviewers probe.
 
 ### Explain
+With no question, explain the decisions behind the current session's changes, or the latest diff if the session made none.
+
 1. Read `docs/decisions.md`, then the code it points to.
 2. Answer the question directly first, then give the trade-off.
 3. You MUST tag each claim with its source: `[logged D-<n>]`, `[from code <path>]`, or `[inferred]`. You MUST NOT present an inferred reason as a logged one, because the user will repeat it in an interview as fact.
