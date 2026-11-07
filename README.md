@@ -122,6 +122,9 @@ No. The agent logs only choices a reviewer could reasonably question, such as a 
 **Can it make up reasons?**
 The agent can guess, but it has to say so. Every claim in explain and interview mode is tagged `logged`, `from code` or `inferred`. That matters most in an interview, where a guessed reason repeated as fact is worse than "I don't know".
 
+**Will it give me textbook answers?**
+No. The agent decides and explains like the engineer who gets paged for the result. It weighs what fails when a dependency is down, who has to run and fix it, and whether the gain is worth the effort. A theoretically better design loses to a simpler one that keeps working, and the explanation says what was given up.
+
 **Does my code leave my machine?**
 The plugin doesn't send anything anywhere. The log and the walkthrough are plain markdown files in your repo. The band only reads `docs/decisions.md`.
 

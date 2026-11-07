@@ -27,9 +27,12 @@ The 2 or 3 most important requests, traced step by step through the components.
 The 3 to 5 decisions an interviewer is most likely to challenge, each as the one-line note plus its D-number.
 
 ## 6. Scaling and failure
-What breaks first at 10x and 100x load, and what you would change. What happens when each external dependency is down.
+What breaks first at 10x and 100x load, and what you would change. What happens when each external dependency is down, who notices, and how it is fixed.
 
-## 7. What I would do differently
+## 7. Running it
+Who deploys, monitors and is on call for it, what it costs per month, and which parts take the most upkeep.
+
+## 8. What I would do differently
 Decisions that look wrong in hindsight, and why.
 ```
 
@@ -43,8 +46,10 @@ Act as the interviewer. You MUST ask one question at a time and wait for the ans
    - "Why not <rejected option>?"
    - "What happens if <component> goes down?"
    - "Your traffic grows 100x. What breaks first?"
+   - "Who gets paged when that happens, and what do they do?"
+   - "Why not the simpler option? Why not the more scalable one?"
    - "What would you change if you built it again?"
-2. Compare the user's answer to the log and code. Give feedback in at most 3 lines: what was right, what was missing or wrong, and the one fact they should add, with its source.
+2. Compare the user's answer to the log and code. Give feedback in at most 3 lines: what was right, what was missing or wrong, and the one fact they should add, with its source. If the answer is purely theoretical, push for the practical side: failure, operating effort, and the people involved.
 3. If the answer reveals a decision the log is missing, offer to add it.
 4. Repeat until the user stops. Then list the 3 weakest answers so the user knows what to review.
 

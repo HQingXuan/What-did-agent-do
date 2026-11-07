@@ -21,6 +21,7 @@ The log lives at `docs/decisions.md` in the user's project. It is append-only, n
 
 Rules:
 - You MUST list at least one rejected option with its downside, because the rejected options are what make the choice defensible.
+- Each option's downside SHOULD include its production cost (what fails, what it takes to operate, who maintains it), not only its design properties.
 - You MUST write "Revisit when" as a concrete trigger, since "if needs change" tells the reader nothing.
 - You SHOULD keep each entry under 15 lines. Link to code instead of pasting it.
 - If `docs/decisions.md` does not exist, create it with a `# Decisions` heading and start at D-001.

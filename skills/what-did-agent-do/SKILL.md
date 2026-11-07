@@ -29,6 +29,17 @@ Every decision has an origin, which answers "did the agent invent this?":
 - `new`: introduces something the codebase did not have before.
 - `user`: the user asked for it.
 
+### Decide like the engineer who gets paged
+You MUST judge every option by how it behaves in production and who has to live with it, not by how it looks on a whiteboard. The best option is usually the one that solves the real problem with the fewest new things that can break. Before choosing, check:
+
+1. **Failure:** what happens when it is down, slow, or returns bad data? Each network call, external dependency, queue or new service on the critical path is a new way to fail. Prefer the option that keeps working, or fails safely, without it.
+2. **Operations:** who deploys, monitors, upgrades and gets paged for it? A new datastore, service or dependency is a cost paid every month, not once.
+3. **Effort vs. gain:** take the smallest change that solves the problem at the project's real scale. Don't build for traffic, users or features the project doesn't have; name the trigger to upgrade instead.
+4. **People:** can the people who own this, often one person, understand, debug and change it at 2 a.m.? Prefer what they and the codebase already use. Count who else is affected: reviewers, on-call, users during a migration or outage.
+5. **Reversibility:** prefer the choice that is cheap to undo when you are unsure.
+
+When the theoretically better option loses on these checks, pick the practical one and say what you gave up.
+
 ### The one-line note
 You MUST state each decision in your reply as one line, in this form:
 
@@ -41,10 +52,13 @@ Examples:
 Decision: SQLite over Postgres, because single user and zero ops. Cost: one writer at a time. [new]
 Decision: cursor pagination over offset, because the feed is appended live. Cost: no jump-to-page. [follows api/orders.ts]
 Decision: retry 3x with backoff on the payment call, because the provider rate-limits bursts. Cost: up to 7s extra latency on failure. [user]
+Decision: in-process cache over Redis, because one instance and nobody to run Redis. Cost: cache empties on restart. [new]
+Decision: compute prices locally over calling the pricing API per request, because an outage there would block checkout. Cost: prices up to 1h stale. [new]
 ```
 
 Rules for the line:
 - You MUST name the rejected alternative, since a choice with no alternative explains nothing.
+- You MUST state the cost in real-world terms (what fails, who is affected, what it takes to run), not abstract ones like "more complex".
 - You MUST write `Cost: none` only when no cost exists. If you can't name a cost, you probably haven't thought it through.
 - You SHOULD use numbers over adjectives ("up to 7s", not "some latency").
 - Keep it under about 25 words so it can be read at a glance. Detail goes in the log.
@@ -69,7 +83,7 @@ If the skill is invoked with the argument `explain`, `backfill` or `interview`, 
 With no question, explain the decisions behind the current session's changes, or the latest diff if the session made none.
 
 1. Read `docs/decisions.md`, then the code it points to.
-2. Answer the question directly first, then give the trade-off.
+2. Answer the question directly first, then give the trade-off in practical terms: what breaks and how often, who fixes it, what it costs to run, and when the choice should change. You MUST NOT give a textbook pros-and-cons list, because the user needs the reasons that hold up in production and in an interview.
 3. You MUST tag each claim with its source: `[logged D-<n>]`, `[from code <path>]`, or `[inferred]`. You MUST NOT present an inferred reason as a logged one, because the user will repeat it in an interview as fact.
 4. If the reason is only inferred and it matters, offer to backfill it into the log.
 
