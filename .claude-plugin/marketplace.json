@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "what-did-agent-do",
+  "description": "Understand and defend the code your agent wrote.",
+  "owner": { "name": "HaoQ", "url": "https://github.com/HQingXuan" },
+  "plugins": [
+    {
+      "name": "what-did-agent-do",
+      "description": "One-line decision notes, a decision log, and system design interview prep.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

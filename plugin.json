@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "what-did-agent-do",
+  "version": "0.1.0",
+  "description": "Makes the agent explain every design decision in one line, keeps a decision log, and preps you for a system design interview on the project.",
+  "author": { "name": "HaoQ", "url": "https://github.com/HQingXuan" },
+  "homepage": "https://github.com/HQingXuan/What-did-agent-do",
+  "repository": "https://github.com/HQingXuan/What-did-agent-do",
+  "license": "MIT",
+  "keywords": ["decision-log", "adr", "explainability", "system-design-interview"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "What did agent do",
+        "shortDescription": "Explain and defend agent-written code",
+        "longDescription": "One-line notes for every design decision, a decision log in docs/decisions.md, and a system design interview walkthrough with a practice drill.",
+        "developerName": "HaoQ",
+        "category": "Productivity",
+        "capabilities": ["Instructions"],
+        "websiteURL": "https://github.com/HQingXuan/What-did-agent-do",
+        "defaultPrompt": [
+          "Explain the decisions behind this change.",
+          "Backfill the decision log for this project.",
+          "Prep me for a system design interview on this project."
+        ]
+      }
+    }
+  }
+}
