@@ -24,6 +24,10 @@ The difference is what you are left holding afterwards:
 
 ### 1. "Add rate limiting per IP to POST /links."
 
+![Two live Claude Code sessions after the same task. Left, without the plugin: a long reply. Right, with the plugin: the same kind of limiter, two Decision lines, and the band showing 2 decisions.](../../assets/before-after.png)
+
+<sub>A separate live run of this task in two interactive sessions, so the wording differs from the transcripts below.</sub>
+
 **Without the plugin:** an in-memory limiter. The reason is in one bullet of a long reply: *"I didn't add a library like Flask-Limiter; since the app runs as one process on one VM, in-memory state works."*
 
 **With the plugin:** the same kind of limiter, plus:
@@ -90,4 +94,4 @@ Agent: Right: keeping things simple is a theme you can defend here (D-001, D-003
 
 - One run per arm. Agent output varies, so a second run would word things differently.
 - The project README states the constraints, which helps both arms. A project with no README would test the decision checks harder.
-- The band isn't shown: `--bare` mode doesn't load it.
+- The scripted run uses `--bare` mode, which doesn't load the band. The screenshots come from separate interactive sessions.

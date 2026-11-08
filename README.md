@@ -4,9 +4,9 @@
 
 What-did-agent-do is a plugin for Claude Code, Codex and other coding agents. It makes the agent explain every design choice in one line as it works, keeps those choices in a log in your repo, and turns that log into a system design walkthrough you can present in an interview.
 
-```
-Decision: SQLite over Postgres, because single user and zero ops. Cost: one writer at a time. [new]
-```
+![The same task in two Claude Code sessions. Without the plugin, the reasoning is spread across a long reply. With it, the reply ends with two Decision lines naming the rejected option and the cost, and the band above the prompt shows 2 decisions.](assets/before-after.png)
+
+<sub>The same task, "Add rate limiting per IP to POST /links", in two live Claude Code sessions on the [example project](examples/url-shortener/).</sub>
 
 ## Why I built this
 
@@ -23,6 +23,8 @@ With this plugin:
 - Each line says whether the agent **followed** a pattern in your codebase or made something **new**, so you know what to review closely.
 - The choices are saved to `docs/decisions.md`, so they outlive the chat session and show up in code review.
 - When you ask "why is this built this way?", the agent answers from the log and the code, and labels anything it's guessing.
+
+![Asked why not Redis, the agent answers with what fails when Redis is down, what it costs to run, the costs accepted, and when to switch. Each claim is tagged logged, inferred or from code.](assets/explain.png)
 
 You stay the person who can explain the system.
 
@@ -75,9 +77,7 @@ A logged decision looks like this:
 
 In Claude Code, the plugin adds a row above the prompt:
 
-```
-what-did-agent-do  7 decisions · 2 new  Explain  Backfill  Interview
-```
+![The band above the Claude Code prompt: what-did-agent-do, 7 decisions, 6 new, then buttons 1: Explain, 2: Backfill, 3: Interview.](assets/band.png)
 
 You can see at a glance how many decisions the agent has made and how many it invented. Click a button, or type `1`, `2` or `3` in an empty prompt, to start a mode.
 
