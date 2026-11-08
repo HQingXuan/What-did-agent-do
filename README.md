@@ -81,6 +81,10 @@ what-did-agent-do  7 decisions · 2 new  Explain  Backfill  Interview
 
 You can see at a glance how many decisions the agent has made and how many it invented. Click a button, or type `1`, `2` or `3` in an empty prompt, to start a mode.
 
+## See it run
+
+[`examples/url-shortener`](examples/url-shortener/) runs the same three tasks with and without the plugin, then explains a decision and drills an interview answer. The code came out similar; what the plugin added is 7 logged decisions, a design walkthrough, and the drill.
+
 ## Install
 
 ### Claude Code
